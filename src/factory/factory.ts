@@ -7,7 +7,7 @@
  */
 
 export interface Factory {
-	fileName(): string;
-	generate(): unknown[];
-	save(): void;
+  fileName(): string;
+  generate(): unknown[];
+  save(): void;
 }
