@@ -1,3 +1,4 @@
+import { loadCoordinates }   from '../lib/loader';
 import { CoordinateFactory } from './factory/coordinates';
 import { Graph }             from './Graph';
 
@@ -10,7 +11,12 @@ export function main(){
 	coordinate.save();
 	
 	const graph = new Graph();
-	console.log( graph.coordinates );
+	
+	loadCoordinates()
+		.then( (coordinates) => {
+			graph.coordinates = coordinates;
+			console.log( graph.coordinates );
+		} )
 }
 
 main();

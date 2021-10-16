@@ -5,14 +5,16 @@
  * Date: 	15/10/2021
  * Time: 	21:24
  */
-import { loadCoordinates } from '../lib/loader';
-import { Coordinate }      from './model/map';
+import { Coordinate } from './model/map';
 
 export class Graph {
-	coordinates: Coordinate[] = [];
+	private _coordinates: Coordinate[] = [];
 	
-	constructor() {
-		loadCoordinates()
-			.then( coordinates => this.coordinates = coordinates );
+	get coordinates(): Coordinate[] {
+		return this._coordinates;
+	}
+	
+	set coordinates( value: Coordinate[] ) {
+		this._coordinates = value;
 	}
 }

@@ -12,7 +12,8 @@ import { Coordinate } from '../model/map';
 import { Factory }    from './factory';
 
 export class CoordinateFactory implements Factory {
-	static readonly fileName: string = 'coordinates.co.bin';
+	static readonly FILE_NAME: string  = 'coordinates.co.bin';
+	static readonly BLOCK_SIZE: number = 4 * 2; // Int32 * 2. One for X and another for Y
 	
 	generate(): Coordinate[] {
 		const coordinates: Coordinate[] = [];
@@ -27,7 +28,7 @@ export class CoordinateFactory implements Factory {
 	
 	save(): void {
 		const coordinates: Coordinate[] = this.generate();
-		let buffer = Buffer.alloc( 4 * coordinates.length * 2);
+		const buffer = Buffer.alloc( coordinates.length * CoordinateFactory.BLOCK_SIZE);
 		let idx = 0;
 		coordinates.forEach( coordinate => {
 			buffer.writeInt32LE( coordinate.x, idx );
@@ -40,6 +41,6 @@ export class CoordinateFactory implements Factory {
 	}
 	
 	fileName(): string {
-		return CoordinateFactory.fileName;
+		return CoordinateFactory.FILE_NAME;
 	}
 }

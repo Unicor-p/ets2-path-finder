@@ -8,6 +8,6 @@
 
 export interface Factory {
 	fileName(): string;
-	generate(): any[];
+	generate(): unknown[];
 	save(): void;
 }
