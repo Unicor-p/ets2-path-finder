@@ -2,7 +2,12 @@ import { createCoordinateFromBytes } from '../../lib/loader.lib';
 import { CoordinateFactory } from '../../src/factory/coordinates.factory';
 
 test('should be a valid buffer', () => {
-  const buffer = Buffer.alloc(CoordinateFactory.BLOCK_SIZE + 1);
+  let buffer = Buffer.alloc(CoordinateFactory.BLOCK_SIZE + 1);
+  expect(() => createCoordinateFromBytes(0, buffer)).toThrow(
+    /Invalid buffer\. The given buffer length \d+ do not match with the expected value \d+/g
+  );
+
+  buffer = Buffer.alloc(CoordinateFactory.BLOCK_SIZE - 1);
   expect(() => createCoordinateFromBytes(0, buffer)).toThrow(
     /Invalid buffer\. The given buffer length \d+ do not match with the expected value \d+/g
   );

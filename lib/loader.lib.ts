@@ -27,7 +27,7 @@ export function createCoordinateFromBytes(
   id: number,
   buffer: Buffer
 ): Coordinate {
-  if (buffer.length > CoordinateFactory.BLOCK_SIZE)
+  if (buffer.length !== CoordinateFactory.BLOCK_SIZE)
     throw new Error(
       `Invalid buffer. The given buffer length ${buffer.length} do not match with the expected value ${CoordinateFactory.BLOCK_SIZE}`
     );
