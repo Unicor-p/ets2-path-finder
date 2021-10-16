@@ -2,13 +2,14 @@
   "name": "ets2-path-finder",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/main.js",
   "scripts": {
+    "start": "npx ts-node src/main.ts",
     "ts:build": "npx tsc",
     "ts:watch": "npx tsc -w",
-    "lint": "npx eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "npx eslint src lib --ext .js,.jsx,.ts,.tsx --fix",
     "test": "jest",
-    "coverage" :  "npx typescript-coverage-report -s -o coverage"
+    "coverage": "npx typescript-coverage-report -s -o coverage"
   },
   "repository": {
     "type": "git",
