@@ -4,14 +4,15 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "start": "npx ts-node src/main.ts",
-    "ts:build": "npx tsc",
-    "ts:watch": "npx tsc -w",
-    "lint": "npx eslint src lib test --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "npx eslint src lib test --ext .js,.jsx,.ts,.tsx --fix",
-    "codestyle:fix": "npx prettier --config .prettierrc src/**/*.ts lib/**/*.ts test/**/*.ts --write",
-    "test": "jest",
-    "coverage": "npx typescript-coverage-report -s -o coverage"
+    "start":         "npx ts-node src/main.ts",
+    "ts:build":      "npx tsc",
+    "ts:watch":      "npx tsc -w",
+    "lint":          "npx eslint src src/utils test --ext .js,.jsx,.ts,.tsx",
+    "lint:fix":      "npx eslint src src/utils test --ext .js,.jsx,.ts,.tsx --fix",
+    "codestyle:fix": "npx prettier --config .prettierrc src/**/*.ts src/utils/**/*.ts test/**/*.ts --write",
+    "test":          "jest",
+    "ci": "npm run lint && npm run codestyle:fix && npm test",
+    "coverage":      "npx typescript-coverage-report -s -o coverage"
   },
   "repository": {
     "type": "git",
