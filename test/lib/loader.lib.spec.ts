@@ -1,5 +1,6 @@
-import { createCoordinateFromBytes } from '../../lib/loader.lib';
+import { createCoordinateFromBytes, createEdge } from '../../lib/loader.lib';
 import { CoordinateFactory } from '../../src/factory/coordinates.factory';
+import { EdgeFactory } from '../../src/factory/edge.factory';
 
 test('should be a valid buffer', () => {
   let buffer = Buffer.alloc(CoordinateFactory.BLOCK_SIZE + 1);
@@ -21,4 +22,14 @@ test('should be a valid Coordinate model', () => {
 
   expect(coordinate.x).toBe(123456789);
   expect(coordinate.y).toBe(-123456789);
+});
+
+test('should be a valid Edge model', () => {
+  const buffer = Buffer.alloc(EdgeFactory.BLOCK_SIZE);
+  buffer.writeInt32LE(0, 0);
+  buffer.writeInt32LE(1, 4);
+  const edge = createEdge(buffer);
+
+  expect(edge.from).toBe(0);
+  expect(edge.to).toBe(1);
 });

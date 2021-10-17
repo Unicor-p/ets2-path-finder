@@ -35,9 +35,10 @@ export function readStreamByBlockSize(
 
       stream
         .on('data', (buffer: Buffer) => {
-          // console.log( buffer.readInt32LE() );
-          // console.log( buffer.readInt32LE( 4 ) );
-          // console.log( '---' );
+          // console.log(buffer.length);
+          // console.log(buffer.readInt32LE());
+          // console.log(buffer.readInt32LE(4));
+          // console.log('---');
           callback(i++, buffer);
         })
         .on('end', () => {
