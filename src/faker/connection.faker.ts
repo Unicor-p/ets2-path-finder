@@ -14,16 +14,14 @@ export class ConnectionFaker implements Faker {
   static readonly FILE_NAME: string = 'connection.co.bin';
 
   generate(): Connection[] {
-    const edges: Connection[] = [];
-    edges.push(new Connection(0, 1));
-    edges.push(new Connection(0, 3));
-    edges.push(new Connection(2, 3));
-    edges.push(new Connection(2, 4));
-    edges.push(new Connection(3, 2));
-    edges.push(new Connection(3, 4));
-    edges.push(new Connection(4, 5));
+    const connections: Connection[] = [];
+    connections.push(new Connection(0, 1));
+    connections.push(new Connection(2, 0));
+    connections.push(new Connection(2, 3));
+    connections.push(new Connection(0, 4));
+    connections.push(new Connection(4, 3));
 
-    return edges;
+    return connections;
   }
 
   save(): void {

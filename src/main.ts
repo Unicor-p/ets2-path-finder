@@ -11,7 +11,7 @@ export function main() {
   resolver
     .init()
     .then(() => {
-      const points = resolver.resolve(0, 5);
+      const points = resolver.resolve(0, 3);
       console.log(readablePath(points));
     })
     .catch((e) => {

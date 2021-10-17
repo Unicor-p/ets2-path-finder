@@ -17,7 +17,11 @@ export class Resolver {
 
   constructor() {
     this._graph = createGraph();
-    this._finder = aStar(this._graph);
+    this._finder = aStar(this._graph, {
+      oriented: true,
+      distance: resolverDistance,
+      heuristic: resolverHeuristic
+    });
   }
 
   init(pointPath?: string, connectionPath?: string): Promise<this> {
@@ -48,6 +52,17 @@ export class Resolver {
   resolve(from: number, to: number) {
     return this._finder.find(from, to);
   }
+}
+
+export function resolverDistance(fromNode: Node, toNode: Node): number {
+  const dx = fromNode.data.x - toNode.data.x;
+  const dy = fromNode.data.y - toNode.data.y;
+
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+export function resolverHeuristic(fromNode: Node, toNode: Node): number {
+  return resolverDistance(fromNode, toNode);
 }
 
 export function readablePath(nodes: Node[]) {

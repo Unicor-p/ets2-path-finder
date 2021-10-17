@@ -8,7 +8,6 @@
 import * as fs from 'fs';
 import * as Path from 'path';
 import { Point } from '../model/point.model';
-import { random } from '../utils/common.utils';
 import { Faker } from './faker';
 
 export class PointFaker implements Faker {
@@ -16,14 +15,11 @@ export class PointFaker implements Faker {
 
   generate(): Point[] {
     const points: Point[] = [];
-    for (let i = 0; i < 6; i++) {
-      points.push(
-        new Point(i, {
-          x: random(0, 2 ** 31),
-          y: random(0, 2 ** 31)
-        })
-      );
-    }
+    points.push(new Point(0, { x: 0, y: 0 }));
+    points.push(new Point(1, { x: 1, y: 1 }));
+    points.push(new Point(2, { x: -1, y: -1 }));
+    points.push(new Point(3, { x: -2, y: -2 }));
+    points.push(new Point(4, { x: 0, y: -1 }));
 
     return points;
   }
