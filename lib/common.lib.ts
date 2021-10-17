@@ -18,22 +18,32 @@ export function readStreamByBlockSize(
   blockSize: number,
   callback: CallableFunction
 ): Promise<null> {
-  const stream = fs.createReadStream(filename, {
-    highWaterMark: blockSize
-  });
-  let i = 0;
-
   return new Promise(function (resolve, reject) {
-    stream
-      .on('data', (buffer: Buffer) => {
-        // console.log( buffer.readInt32LE() );
-        // console.log( buffer.readInt32LE( 4 ) );
-        // console.log( '---' );
-        callback(i++, buffer);
-      })
-      .on('end', () => {
-        resolve(null);
-      })
-      .on('error', reject);
+    fs.exists(filename, (exist) => {
+      if (!exist)
+        reject(
+          new Error(
+            'File not found. This file was not found or is not readable: ' +
+              filename
+          )
+        );
+
+      const stream = fs.createReadStream(filename, {
+        highWaterMark: blockSize
+      });
+      let i = 0;
+
+      stream
+        .on('data', (buffer: Buffer) => {
+          // console.log( buffer.readInt32LE() );
+          // console.log( buffer.readInt32LE( 4 ) );
+          // console.log( '---' );
+          callback(i++, buffer);
+        })
+        .on('end', () => {
+          resolve(null);
+        })
+        .on('error', reject);
+    });
   });
 }
