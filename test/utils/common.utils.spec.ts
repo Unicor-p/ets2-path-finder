@@ -1,4 +1,5 @@
-import { random, readStreamByBlockSize } from '../../src/utils/common.utils';
+import { random } from '../../src/utils/common.utils';
+import { readStreamByBlockSize } from '../../src/utils/loader.utils';
 
 test('should return a number between min and max value', () => {
   const number = random(0, 100);

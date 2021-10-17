@@ -7,7 +7,7 @@
  */
 import * as fs from 'fs';
 import * as Path from 'path';
-import { Connection } from '../model/map.model';
+import { Connection } from '../model/connection.model';
 import { Faker } from './faker';
 
 export class ConnectionFaker implements Faker {

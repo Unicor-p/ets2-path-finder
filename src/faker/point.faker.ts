@@ -7,7 +7,7 @@
  */
 import * as fs from 'fs';
 import * as Path from 'path';
-import { Point } from '../model/map.model';
+import { Point } from '../model/point.model';
 import { random } from '../utils/common.utils';
 import { Faker } from './faker';
 

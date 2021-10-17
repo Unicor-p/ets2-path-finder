@@ -9,7 +9,8 @@ import fs from 'fs';
 import * as Path from 'path';
 import { ConnectionFaker } from '../faker/connection.faker';
 import { PointFaker } from '../faker/point.faker';
-import { Connection, Point } from '../model/map.model';
+import { Connection } from '../model/connection.model';
+import { Point } from '../model/point.model';
 
 export function loadPoints(path?: string): Promise<Point[]> {
   const coordinates: Point[] = [];

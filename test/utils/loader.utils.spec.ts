@@ -1,4 +1,5 @@
-import { Connection, Point } from '../../src/model/map.model';
+import { Connection } from '../../src/model/connection.model';
+import { Point } from '../../src/model/point.model';
 import {
   createConnectionFromBuffer,
   createPointFromBuffer

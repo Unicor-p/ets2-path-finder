@@ -7,7 +7,8 @@
  */
 import createGraph, { Graph, Node } from 'ngraph.graph';
 import { aStar, PathFinder } from 'ngraph.path';
-import { Connection, Point } from './model/map.model';
+import { Connection } from './model/connection.model';
+import { Point } from './model/point.model';
 import { loadConnections, loadPoints } from './utils/loader.utils';
 
 export class Resolver {
