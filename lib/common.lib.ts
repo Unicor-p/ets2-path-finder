@@ -16,7 +16,7 @@ export function random(min: number, max: number): number {
 export function readStreamByBlockSize(
   filename: string,
   blockSize: number,
-  callback: CallableFunction
+  callback: CallableFunction | null
 ): Promise<null> {
   return new Promise(function (resolve, reject) {
     fs.exists(filename, (exist) => {
@@ -39,7 +39,7 @@ export function readStreamByBlockSize(
           // console.log(buffer.readInt32LE());
           // console.log(buffer.readInt32LE(4));
           // console.log('---');
-          callback(i++, buffer);
+          if (callback !== null) callback(i++, buffer);
         })
         .on('end', () => {
           resolve(null);

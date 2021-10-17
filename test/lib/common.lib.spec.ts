@@ -10,7 +10,7 @@ test('should return a number between min and max value', () => {
 test('should throw an error on invalide field name', async () => {
   const path = 'unknownPath';
   expect.assertions(1);
-  await expect(() => readStreamByBlockSize(path, 4, () => {})).rejects.toThrow(
+  await expect(() => readStreamByBlockSize(path, 4)).rejects.toThrow(
     /^File not found\. This file was not found or is not readable: .*/g
   );
 });
