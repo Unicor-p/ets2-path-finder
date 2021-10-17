@@ -1,21 +1,18 @@
 import { ConnectionFaker } from './faker/connection.faker';
 import { PointFaker } from './faker/point.faker';
-import { redablePath, Resolver } from './resolver';
+import { readablePath, Resolver } from './resolver';
 
 export function main() {
-  const coordinateFactory = new PointFaker();
-  coordinateFactory.save();
+  new PointFaker().save();
+  new ConnectionFaker().save();
 
-  const edgeFactory = new ConnectionFaker();
-  edgeFactory.save();
+  const resolver = new Resolver();
 
-  const pathResolver = new Resolver();
-
-  pathResolver
+  resolver
     .init()
     .then(() => {
-      const points = pathResolver.resolve(0, 5);
-      console.log(redablePath(points));
+      const points = resolver.resolve(0, 5);
+      console.log(readablePath(points));
     })
     .catch((e) => {
       console.error('[ERROR] ' + e.message);

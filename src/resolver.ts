@@ -50,7 +50,7 @@ export class Resolver {
   }
 }
 
-export function redablePath(nodes: Node[]) {
+export function readablePath(nodes: Node[]) {
   let path = '';
   nodes.reverse().map((node) => {
     path += node.id + ' -> ';

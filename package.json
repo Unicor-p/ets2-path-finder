@@ -11,7 +11,7 @@
     "lint:fix":      "npx eslint src src/utils test --ext .js,.jsx,.ts,.tsx --fix",
     "codestyle:fix": "npx prettier --config .prettierrc src/**/*.ts src/utils/**/*.ts test/**/*.ts --write",
     "test":          "jest",
-    "ci": "npm run lint && npm run codestyle:fix && npm test",
+    "ci": "npm run ts:build && npm run lint && npm run codestyle:fix && npm test",
     "coverage":      "npx typescript-coverage-report -s -o coverage"
   },
   "repository": {
