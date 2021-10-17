@@ -17,7 +17,7 @@ export class CoordinateFactory implements Factory {
 
   generate(): Coordinate[] {
     const coordinates: Coordinate[] = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       coordinates.push(
         new Coordinate(i, random(0, 2 ** 31), random(0, 2 ** 31))
       );

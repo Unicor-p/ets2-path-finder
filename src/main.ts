@@ -1,7 +1,7 @@
 import { loadCoordinates, loadEdges } from '../lib/loader.lib';
 import { CoordinateFactory } from './factory/coordinates.factory';
 import { EdgeFactory } from './factory/edge.factory';
-import { Graph } from './graph';
+import { PathResolver } from './pathResolver';
 
 export function main() {
   const coordinateFactory = new CoordinateFactory();
@@ -10,19 +10,20 @@ export function main() {
   const edgeFactory = new EdgeFactory();
   edgeFactory.save();
 
-  const graph = new Graph();
+  const pathResolver = new PathResolver();
 
   loadCoordinates()
     .then((coordinates) => {
-      graph.coordinates = coordinates;
+      pathResolver.coordinates = coordinates;
     })
     .then(() => loadEdges())
     .then((edges) => {
-      graph.edges = edges;
+      pathResolver.edges = edges;
     })
     .then(() => {
-      console.log(graph.coordinates);
-      console.log(graph.edges);
+      console.log(pathResolver.coordinates);
+      console.log(pathResolver.edges);
+      console.log(pathResolver.resovle(0, 5));
     })
     .catch((e) => {
       console.error('[ERROR] ' + e.message);
